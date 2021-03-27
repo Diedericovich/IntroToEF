@@ -1,9 +1,7 @@
 ﻿using IntroToEF.Data.Entities;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IntroToEF.Data.Repositories
 {
@@ -26,8 +24,12 @@ namespace IntroToEF.Data.Repositories
             return context.Battles.Find(id);
         }
 
-
-
-
+        public Battle GetBattleWithSamurai(int id)
+        {
+            return context.Battles
+                 .Include(x => x.Samurai)
+                 .Where(p => p.Id == id)
+                 .FirstOrDefault();
+        }
     }
 }
