@@ -85,7 +85,7 @@ namespace IntroToEF.Business
                     break;
 
                 case 3:
-
+                    UpdateInfoSamurai();
                     break;
 
                 case 4:
@@ -132,6 +132,97 @@ namespace IntroToEF.Business
             }
             _samuraiRepo.AddSamurai(samurai);
             ShowMenu();
+        }
+
+
+        public void UpdateInfoSamurai()
+        {
+
+            PrintListofSamurai(_samuraiRepo.GetSamurais());
+            Console.WriteLine("Choose Samurai you want to edit by ID:");
+            Samurai samurai = _samuraiRepo.GetSamurai(Convert.ToInt32(Console.ReadLine()));
+            Console.WriteLine("Change the following info:");
+            samurai.Name = AskName();
+            Console.WriteLine("2. Dynasty:");
+            samurai.Dynasty = Console.ReadLine();
+
+            if (samurai.Horses.Count !=0)
+            {
+                PrintListofHorses(samurai.Horses);
+                Console.WriteLine("Do you want to delete horses? Y/N");
+
+                if (Console.ReadLine().ToLower() == "y")
+                {
+                    DeleteHorses(samurai);
+                }
+            }
+
+          
+
+            Console.WriteLine("Do you want to add horses? Y/N");
+
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                AddMultipleHorses(samurai);
+            }
+
+
+            if (samurai.Quotes.Count != 0)
+            {
+                PrintListofQuotes(samurai.Quotes);
+                Console.WriteLine("Do you want to delete quotes? Y/N");
+
+                if (Console.ReadLine().ToLower() == "y")
+                {
+                    Console.WriteLine("Enter the ID of the quote you want to delete");
+                    samurai.Quotes.RemoveAt(Convert.ToInt32(Console.ReadLine()) - 1);
+                }
+            }
+
+           
+
+            Console.WriteLine("Do you want to add quotes? Y/N");
+
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                AddMultipleQuotes(samurai);
+            }
+
+
+            if (samurai.Battles.Count != 0)
+            {
+                PrintListofBattles(samurai.Battles);
+                Console.WriteLine("Do you want to delete battles? Y/N");
+
+                if (Console.ReadLine().ToLower() == "y")
+                {
+                    Console.WriteLine("Enter the ID of the battle you want to delete");
+                    samurai.Battles.RemoveAt(Convert.ToInt32(Console.ReadLine()) - 1);
+                }
+            }
+
+
+            Console.WriteLine("Did the samurai fight in additional battles? Y/N");
+
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                PrintListofBattles(_battleRepo.GetBattles());
+                samurai = AddMultipleBattles(samurai);
+            }
+            _samuraiRepo.AddSamurai(samurai);
+            ShowMenu();
+        }
+
+        private static void DeleteHorses(Samurai samurai)
+        {
+            Console.WriteLine("Enter the ID of the horse you want to delete");
+            samurai.Horses.RemoveAt(Convert.ToInt32(Console.ReadLine()) - 1);
+            Console.WriteLine("Want to delete more horses? Y/N");
+
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                DeleteHorses(samurai);
+            }
         }
 
         private Samurai AddMultipleBattles(Samurai samurai)
@@ -293,12 +384,8 @@ namespace IntroToEF.Business
         {
             PrintListofSamurai(_samuraiRepo.GetSamurais());
             Console.WriteLine("Choose Samurai to delete by id:");
-            RemoveSamurai(Convert.ToInt32(Console.ReadLine()));
-        }
-
-        public void RemoveSamurai(int id)
-        {
-            _samuraiRepo.DeleteSamurai(id);
+            _samuraiRepo.DeleteSamurai(Convert.ToInt32(Console.ReadLine()));
+            ShowMenu();
         }
 
         private void PrintListofSamurai(List<Samurai> samuraiList)
