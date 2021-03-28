@@ -24,37 +24,7 @@ namespace IntroToEF.Business
 
         public void RunApp()
         {
-            //Console.WriteLine("Hello. Please enter a samurai");
-            //string name = Console.ReadLine();
-
-            //_samuraiRepo.AddSamurai(name);
-            //_samuraiRepo.AddSamurais();
-
-            //_horseRepo.AddHorse();
-            // _horseRepo.AddHorses();
-
-            //_quoteRepo.AddQuote();
-            //_quoteRepo.AddQuotes();
-
-            //AddSamuraiWithQuotes();
-
-            //GetAllSamurais();
-            //GetAllQuotes();
-            //GetAllHorses();
-
-            //_samuraiRepo.GetSamurai(3);
-
-            //RenameSamurai(9, "Renamed From App");
-            //RenameMultipleSamurais();
-
-            //RemoveSamurai(3);
-
-            // AddSamuraiWhoFoughtInBattles();
-            //var sam = GetSamuraiWithBattles(7);
-            // var SPResult = GetSamuraiWhoSaidAWord("thank");
-
             ShowMenu();
-
             Console.ReadLine();
         }
 
@@ -109,27 +79,11 @@ namespace IntroToEF.Business
             samurai.Name = AskName();
             Console.WriteLine("2. Dynasty:");
             samurai.Dynasty = Console.ReadLine();
-            Console.WriteLine("Does the samurai have horses? Y/N");
+            AddHorses(samurai);
 
-            if (Console.ReadLine().ToLower() == "y")
-            {
-                AddMultipleHorses(samurai);
-            }
+            AddQuotes(samurai);
 
-            Console.WriteLine("Does the samurai have quotes? Y/N");
-
-            if (Console.ReadLine().ToLower() == "y")
-            {
-                AddMultipleQuotes(samurai);
-            }
-
-            Console.WriteLine("Did the samurai fight in battles? Y/N");
-
-            if (Console.ReadLine().ToLower() == "y")
-            {
-                PrintListofBattles(_battleRepo.GetBattles());
-                samurai = AddMultipleBattles(samurai);
-            }
+            AddBattles(samurai);
             _samuraiRepo.AddSamurai(samurai);
             ShowMenu();
         }
@@ -146,7 +100,7 @@ namespace IntroToEF.Business
             Console.WriteLine("2. Dynasty:");
             samurai.Dynasty = Console.ReadLine();
 
-            if (samurai.Horses.Count !=0)
+            if (samurai.Horses.Count != 0)
             {
                 PrintListofHorses(samurai.Horses);
                 Console.WriteLine("Do you want to delete horses? Y/N");
@@ -157,15 +111,7 @@ namespace IntroToEF.Business
                 }
             }
 
-          
-
-            Console.WriteLine("Do you want to add horses? Y/N");
-
-            if (Console.ReadLine().ToLower() == "y")
-            {
-                AddMultipleHorses(samurai);
-            }
-
+            AddHorses(samurai);
 
             if (samurai.Quotes.Count != 0)
             {
@@ -179,15 +125,7 @@ namespace IntroToEF.Business
                 }
             }
 
-           
-
-            Console.WriteLine("Do you want to add quotes? Y/N");
-
-            if (Console.ReadLine().ToLower() == "y")
-            {
-                AddMultipleQuotes(samurai);
-            }
-
+            AddQuotes(samurai);
 
             if (samurai.Battles.Count != 0)
             {
@@ -201,7 +139,13 @@ namespace IntroToEF.Business
                 }
             }
 
+            AddBattles(samurai);
+            _samuraiRepo.AddSamurai(samurai);
+            ShowMenu();
+        }
 
+        private Samurai AddBattles(Samurai samurai)
+        {
             Console.WriteLine("Did the samurai fight in additional battles? Y/N");
 
             if (Console.ReadLine().ToLower() == "y")
@@ -209,8 +153,28 @@ namespace IntroToEF.Business
                 PrintListofBattles(_battleRepo.GetBattles());
                 samurai = AddMultipleBattles(samurai);
             }
-            _samuraiRepo.AddSamurai(samurai);
-            ShowMenu();
+
+            return samurai;
+        }
+
+        private void AddQuotes(Samurai samurai)
+        {
+            Console.WriteLine("Do you want to add quotes? Y/N");
+
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                AddMultipleQuotes(samurai);
+            }
+        }
+
+        private void AddHorses(Samurai samurai)
+        {
+            Console.WriteLine("Do you want to add horses? Y/N");
+
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                AddMultipleHorses(samurai);
+            }
         }
 
         private static void DeleteHorses(Samurai samurai)
