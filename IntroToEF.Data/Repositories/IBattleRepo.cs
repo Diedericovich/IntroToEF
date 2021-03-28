@@ -7,5 +7,6 @@ namespace IntroToEF.Data.Repositories
     {
         Battle GetBattle(int id);
         List<Battle> GetBattles();
+        Battle GetBattleWithSamurai(int id);
     }
 }
