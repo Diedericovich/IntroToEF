@@ -8,10 +8,10 @@ OK - Een gebruiker moet een samurai kunnen toevoegen via de console
 OK - Er moet ook optionele gerelateerde data kunnen toegevoegd worden.
 OK - Heeft een samurai paarden?
 OK - Heeft hij in veldslagen gevochten?
-- Er moet een detail overzicht van een samurai kunnen opgevraagd worden waarin alle gerelateerde data getoond wordt
-- Er moet een filter mogelijkheid zijn. Toon bv enkel de samurai met paarden
-- Toon een overzicht van alle samurai die in een bepaalde veldslag gevochten hebben
-- De data van een bestaande samurai moet aangepast kunnen worden of verwijderd worden.
+OK - Er moet een detail overzicht van een samurai kunnen opgevraagd worden waarin alle gerelateerde data getoond wordt
+q- Er moet een filter mogelijkheid zijn. Toon bv enkel de samurai met paarden
+OK - Toon een overzicht van alle samurai die in een bepaalde veldslag gevochten hebben
+OK - De data van een bestaande samurai moet aangepast kunnen worden of verwijderd worden.
  
 Wil je meer uitdaging? Probeer de functionaliteit om te draaien. 
 Zo is er bijvoorbeeld de mogelijkheid om een samurai met paarden toe te voegen. 
