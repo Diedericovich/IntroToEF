@@ -111,6 +111,8 @@ namespace IntroToEF.Business
                 }
             }
 
+            AddAdditionalHorses(samurai);
+
             AddHorses(samurai);
 
             if (samurai.Quotes.Count != 0)
@@ -123,6 +125,9 @@ namespace IntroToEF.Business
                     Console.WriteLine("Enter the ID of the quote you want to delete");
                     samurai.Quotes.RemoveAt(Convert.ToInt32(Console.ReadLine()) - 1);
                 }
+            }
+
+            AddAdditionalQuotes(samurai);
             }
 
             AddQuotes(samurai);
