@@ -186,7 +186,7 @@ namespace IntroToEF.Business
                     break;
 
                 case 4:
-
+                    DeleteSamurai();
                     break;
 
                 default:
@@ -355,6 +355,13 @@ namespace IntroToEF.Business
             Samurai samurai =_samuraiRepo.GetSamuraiWithIncludedData(Convert.ToInt32(Console.ReadLine()));
             Console.WriteLine(samurai.Name, samurai.Dynasty);
 
+        }
+
+        public void DeleteSamurai()
+        {
+            PrintExistingSamurais();
+            Console.WriteLine("Select the samurai you wish to remove:");
+            _samuraiRepo.DeleteSamurai(Convert.ToInt32(Console.Read()));
         }
 
     }

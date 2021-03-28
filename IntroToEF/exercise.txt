@@ -4,10 +4,10 @@ Maak of breid de bestaande Samurai - Console App uit zodat er data uit de databa
 Deze opdracht is grotendeels carte-blanche. Probeer zelf wat te spelen met het gebruik van een database in een applicatie.
 
 Wat moet er zeker in de app zitten?
-- Een gebruiker moet een samurai kunnen toevoegen via de console
-- Er moet ook optionele gerelateerde data kunnen toegevoegd worden.
-- Heeft een samurai paarden?
-- Heeft hij in veldslagen gevochten?
+OK - Een gebruiker moet een samurai kunnen toevoegen via de console
+OK - Er moet ook optionele gerelateerde data kunnen toegevoegd worden.
+OK - Heeft een samurai paarden?
+OK - Heeft hij in veldslagen gevochten?
 - Er moet een detail overzicht van een samurai kunnen opgevraagd worden waarin alle gerelateerde data getoond wordt
 - Er moet een filter mogelijkheid zijn. Toon bv enkel de samurai met paarden
 - Toon een overzicht van alle samurai die in een bepaalde veldslag gevochten hebben

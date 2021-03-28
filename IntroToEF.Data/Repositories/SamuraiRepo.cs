@@ -100,7 +100,11 @@ namespace IntroToEF.Data.Repositories
         public List<Samurai> GetSamurais()
         {
             //return context.Samurais.ToList(); // vraagt alle samurai op, maar geen quotes of horses
-            return context.Samurais.Include(x => x.Quotes).Include(x => x.Horses).ToList(); // vraagt alles op dat aan samurai hangt
+            return context.Samurais
+                .Include(x => x.Quotes)
+                //.Include(x => x.Horses)
+                //.Include(x => x.Battles)
+                .ToList(); // vraagt alles op dat aan samurai hangt
         }
 
         public Samurai GetSamuraiWildCards(string text)
