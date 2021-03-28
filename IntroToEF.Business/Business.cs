@@ -93,7 +93,7 @@ namespace IntroToEF.Business
                     break;
 
                 case 5:
-
+                    ShowAllSamuraiInBattle();
                     break;
 
                 default:
