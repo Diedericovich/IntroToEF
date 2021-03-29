@@ -24,6 +24,8 @@ namespace IntroToEF.Business
 
         public void RunApp()
         {
+            //_samuraiRepo.AddSamurais();
+            //_battleRepo.AddBattles();
             ShowMenu();
             Console.ReadLine();
         }
@@ -85,6 +87,7 @@ namespace IntroToEF.Business
             AddQuotes(samurai);
 
             AddBattles(samurai);
+
             _samuraiRepo.AddSamurai(samurai);
             ShowMenu();
         }
@@ -143,7 +146,7 @@ namespace IntroToEF.Business
 
         private Samurai AddBattles(Samurai samurai)
         {
-            Console.WriteLine("Did the samurai fight in additional battles? Y/N");
+            Console.WriteLine("Did the samurai fight in battles? Y/N");
 
             if (Console.ReadLine().ToLower() == "y")
             {

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IntroToEF.Data.Migrations
 {
     [DbContext(typeof(SamuraiContext))]
-    [Migration("20210329083504_init")]
-    partial class init
+    [Migration("20210326130615_AddListBattles")]
+    partial class AddListBattles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

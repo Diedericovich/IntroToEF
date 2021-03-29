@@ -48,15 +48,18 @@ namespace IntroToEF.Data.Repositories
             {
                 new Samurai
                 {
-                    Name = "Yamamoto Tsunetomo"
+                    Name = "Soga no Umako",
+                    Dynasty = "Asuka Period"
                 },
                  new Samurai
                 {
-                    Name = "Miyamoto Musashi"
+                    Name = "Yako no Fuhitomaro",
+                    Dynasty = "Nara Period"
                 },
                 new Samurai
                 {
-                    Name = "ListSam3"
+                    Name = "Korehari no Azamaro",
+                    Dynasty = "Heian Period"
                 },
             };
 
