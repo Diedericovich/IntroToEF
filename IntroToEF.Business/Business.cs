@@ -2,6 +2,7 @@
 using IntroToEF.Data.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IntroToEF.Business
 {
@@ -180,7 +181,9 @@ namespace IntroToEF.Business
         private static void DeleteHorses(Samurai samurai)
         {
             Console.WriteLine("Enter the ID of the horse you want to delete");
-            samurai.Horses.RemoveAt(Convert.ToInt32(Console.ReadLine()) - 1);
+            int id = Convert.ToInt32(Console.ReadLine());
+            samurai.Horses.Remove(samurai.Horses.Where(x => x.Id == id).First());
+
             Console.WriteLine("Want to delete more horses? Y/N");
 
             if (Console.ReadLine().ToLower() == "y")
@@ -192,7 +195,9 @@ namespace IntroToEF.Business
         private static void DeleteQuotes(Samurai samurai)
         {
             Console.WriteLine("Enter the ID of the quote you want to delete");
-            samurai.Quotes.RemoveAt(Convert.ToInt32(Console.ReadLine()) - 1);
+            int id = Convert.ToInt32(Console.ReadLine());
+            samurai.Quotes.Remove(samurai.Quotes.Where(x => x.Id == id).First());
+
             Console.WriteLine("Want to delete more quotes? Y/N");
 
             if (Console.ReadLine().ToLower() == "y")
@@ -204,7 +209,9 @@ namespace IntroToEF.Business
         private static void DeleteBattles(Samurai samurai)
         {
             Console.WriteLine("Enter the ID of the battle you want to delete");
-            samurai.Battles.RemoveAt(Convert.ToInt32(Console.ReadLine()) - 1);
+            int id = Convert.ToInt32(Console.ReadLine());
+            samurai.Battles.Remove(samurai.Battles.Where(x => x.Id == id).First());
+
             Console.WriteLine("Want to delete more battles? Y/N");
 
             if (Console.ReadLine().ToLower() == "y")
@@ -381,7 +388,7 @@ namespace IntroToEF.Business
             Console.WriteLine(" Samurai:");
             foreach (var samurai in samuraiList)
             {
-                Console.WriteLine($"   {samurai.Id}. Name: {samurai.Name,15}, Dynasty: {samurai.Dynasty,10}");
+                Console.WriteLine($"   {samurai.Id,4}. Name: {samurai.Name,22}, Dynasty: {samurai.Dynasty,10}");
             }
         }
 
