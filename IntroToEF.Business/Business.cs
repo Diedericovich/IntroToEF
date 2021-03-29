@@ -89,10 +89,8 @@ namespace IntroToEF.Business
             ShowMenu();
         }
 
-
         public void UpdateInfoSamurai()
         {
-
             PrintListofSamurai(_samuraiRepo.GetSamurais());
             Console.WriteLine("Choose Samurai you want to edit by ID:");
             Samurai samurai = _samuraiRepo.GetSamurai(Convert.ToInt32(Console.ReadLine()));
@@ -121,8 +119,7 @@ namespace IntroToEF.Business
 
                 if (Console.ReadLine().ToLower() == "y")
                 {
-                    Console.WriteLine("Enter the ID of the quote you want to delete");
-                    samurai.Quotes.RemoveAt(Convert.ToInt32(Console.ReadLine()) - 1);
+                    DeleteQuotes(samurai);
                 }
             }
 
@@ -135,8 +132,7 @@ namespace IntroToEF.Business
 
                 if (Console.ReadLine().ToLower() == "y")
                 {
-                    Console.WriteLine("Enter the ID of the battle you want to delete");
-                    samurai.Battles.RemoveAt(Convert.ToInt32(Console.ReadLine()) - 1);
+                    DeleteBattles(samurai);
                 }
             }
 
@@ -187,6 +183,30 @@ namespace IntroToEF.Business
             if (Console.ReadLine().ToLower() == "y")
             {
                 DeleteHorses(samurai);
+            }
+        }
+
+        private static void DeleteQuotes(Samurai samurai)
+        {
+            Console.WriteLine("Enter the ID of the quote you want to delete");
+            samurai.Quotes.RemoveAt(Convert.ToInt32(Console.ReadLine()) - 1);
+            Console.WriteLine("Want to delete more quotes? Y/N");
+
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                DeleteQuotes(samurai);
+            }
+        }
+
+        private static void DeleteBattles(Samurai samurai)
+        {
+            Console.WriteLine("Enter the ID of the battle you want to delete");
+            samurai.Battles.RemoveAt(Convert.ToInt32(Console.ReadLine()) - 1);
+            Console.WriteLine("Want to delete more battles? Y/N");
+
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                DeleteBattles(samurai);
             }
         }
 
