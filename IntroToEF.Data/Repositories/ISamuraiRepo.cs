@@ -16,6 +16,9 @@ namespace IntroToEF.Data.Repositories
         List<Samurai> GetSamurais();
         Samurai GetSamuraiWildCards(string text);
         List<Samurai> GetSamuraisWildCards(string text);
+        List<Samurai> GetSamuraisWithQuotes();
+        List<Samurai> GetSamuraisWithHorses();
+        List<Samurai> GetSamuraisWithBattles();
         void UpdateSamurai(Samurai samurai);
         void UpdateSamurais();
         List<Samurai> GetResultFromStoredProcedure(string text);

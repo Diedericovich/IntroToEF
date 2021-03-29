@@ -126,6 +126,22 @@ namespace IntroToEF.Data.Repositories
                 .ToList();
         }
 
+        public List<Samurai> GetSamuraisWithQuotes()
+        {
+            return context.Samurais.Where(x => x.Quotes.Any()).ToList();
+        }
+
+        public List<Samurai> GetSamuraisWithHorses()
+        {
+            return context.Samurais.Where(x => x.Horses.Any()).ToList();
+        }
+
+        public List<Samurai> GetSamuraisWithBattles()
+        {
+            return context.Samurais.Where(x => x.Battles.Any()).ToList();
+        }
+
+
         public void UpdateSamurai(Samurai samurai)
         {
             context.SaveChanges(); // gewoon saven is voldoende 

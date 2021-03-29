@@ -9,7 +9,7 @@ OK - Er moet ook optionele gerelateerde data kunnen toegevoegd worden.
 OK - Heeft een samurai paarden?
 OK - Heeft hij in veldslagen gevochten?
 OK - Er moet een detail overzicht van een samurai kunnen opgevraagd worden waarin alle gerelateerde data getoond wordt
-q- Er moet een filter mogelijkheid zijn. Toon bv enkel de samurai met paarden
+OK - Er moet een filter mogelijkheid zijn. Toon bv enkel de samurai met paarden
 OK - Toon een overzicht van alle samurai die in een bepaalde veldslag gevochten hebben
 OK - De data van een bestaande samurai moet aangepast kunnen worden of verwijderd worden.
  

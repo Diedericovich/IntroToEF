@@ -35,14 +35,14 @@ namespace IntroToEF.Business
         {
             Console.WriteLine("===============================================");
             Console.WriteLine("===============================================");
-            Console.WriteLine("===============================================");
-
+            
             Console.WriteLine("1. Add Samurai");
             Console.WriteLine("2. View details samurai");
             Console.WriteLine("3. Update Samurai");
             Console.WriteLine("4. Delete Samurai");
             Console.WriteLine("5. View details battle");
             Console.WriteLine();
+            Console.WriteLine("===============================================");
             Console.WriteLine("Choose one of the options");
 
             int selection = Convert.ToInt32(Console.ReadLine());
@@ -54,7 +54,7 @@ namespace IntroToEF.Business
                     break;
 
                 case 2:
-                    ShowAllDetailsSamurai();
+                    ShowSamurai();
                     break;
 
                 case 3:
@@ -326,9 +326,66 @@ namespace IntroToEF.Business
             return quote;
         }
 
-        public void ShowAllDetailsSamurai()
+        public void ShowSamurai()
         {
-            PrintListofSamurai(_samuraiRepo.GetSamurais());
+            List<Samurai> samuraiFiltered;
+            Console.WriteLine("===============================================");
+
+            Console.WriteLine("1. View all samurai");
+            Console.WriteLine("2. View samurai with quotes");
+            Console.WriteLine("3. View samurai with horses");
+            Console.WriteLine("4. View samurai with battles");
+            Console.WriteLine("5. Nevermind, take me back to the menu!");
+
+            Console.WriteLine("===============================================");
+            Console.WriteLine("Choose an option");
+
+            switch (Convert.ToInt32(Console.ReadLine()))
+            {
+                case 1:
+                    PrintListofSamurai(_samuraiRepo.GetSamurais());
+                    ShowAllDetails();
+                    break;
+                case 2:
+                    samuraiFiltered = _samuraiRepo.GetSamuraisWithQuotes();
+                    CheckIfFilteredSamuraiIsEmpty(samuraiFiltered);
+                    break;
+                case 3:
+                    samuraiFiltered = _samuraiRepo.GetSamuraisWithHorses();
+                    CheckIfFilteredSamuraiIsEmpty(samuraiFiltered);
+                    break;
+                case 4:
+                    samuraiFiltered = _samuraiRepo.GetSamuraisWithBattles();
+                    CheckIfFilteredSamuraiIsEmpty(samuraiFiltered);
+
+                    break;
+                case 5:
+                    ShowMenu();
+                    break;
+                default:
+                    Console.WriteLine("Wrong input!");
+                    ShowSamurai();
+                    break;
+            }
+            
+        }
+
+        private void CheckIfFilteredSamuraiIsEmpty(List<Samurai> samuraiFiltered)
+        {
+            if (!samuraiFiltered.Any())
+            {
+                Console.WriteLine("There are no samurai with this filter!");
+                ShowSamurai();
+            }
+            else
+            {
+                PrintListofSamurai(samuraiFiltered);
+                ShowAllDetails();
+            }
+        }
+
+        private void ShowAllDetails()
+        {
             Console.WriteLine("Select samurai from list:");
             Samurai samurai = _samuraiRepo.GetSamuraiWithIncludedData(Convert.ToInt32(Console.ReadLine()));
             Console.WriteLine($"Name: {samurai.Name}, Dynasty: {samurai.Dynasty}");
@@ -347,7 +404,7 @@ namespace IntroToEF.Business
             Console.WriteLine("Check different samurai? Y/N");
             if (Console.ReadLine().ToLower() == "y")
             {
-                ShowAllDetailsSamurai();
+                ShowSamurai();
             }
             ShowMenu();
         }
