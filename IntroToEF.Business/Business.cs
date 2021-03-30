@@ -41,6 +41,7 @@ namespace IntroToEF.Business
             Console.WriteLine("3. Update Samurai");
             Console.WriteLine("4. Delete Samurai");
             Console.WriteLine("5. View details battle");
+            Console.WriteLine("6. Exit application");
             Console.WriteLine();
             Console.WriteLine("===============================================");
             Console.WriteLine("Choose one of the options");
@@ -68,7 +69,9 @@ namespace IntroToEF.Business
                 case 5:
                     ShowAllSamuraiInBattle();
                     break;
-
+                case 6:
+                    Environment.Exit(0);
+                    break;
                 default:
                     break;
             }
